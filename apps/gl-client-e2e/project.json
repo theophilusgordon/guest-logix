@@ -1,0 +1,30 @@
+{
+  "name": "gl-client-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/gl-client-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/gl-client-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "gl-client:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "gl-client:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "gl-client:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["gl-client"]
+}
