@@ -16,6 +16,7 @@ model User {
   otherNames String?
   password   String
   company    String?
+  photoUrl   String?
   role       Role     @default(VISITOR)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
